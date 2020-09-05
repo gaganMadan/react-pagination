@@ -1,7 +1,8 @@
 import React,{useEffect, useState} from "react";
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
-import Images from './Images'
+import Images from './Images';
+import Pagination from './Pagination';
 
 import "./style.css";
 
@@ -10,7 +11,7 @@ const App =() => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [imagePerPage, setImagePerPage] = useState(10); 
+  const [imagePerPage, setImagePerPage] = useState(50); 
 
 
   const API = 'https://jsonplaceholder.typicode.com/photos';
@@ -35,6 +36,8 @@ const App =() => {
     <div className="container">
         <h1 className="text-primary">My Images</h1>  
         <Images images={currentPage} loading={loading}/>
+
+        <Pagination imagePerPage={imagePerPage} totalImages={images.length} />
     </div>
   );
 }
