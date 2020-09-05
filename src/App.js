@@ -30,6 +30,8 @@ const App =() => {
   const indexOfLastImage = currentPage * imagePerPage;
   const indexOfFirstImage = indexOfLastImage - imagePerPage;
   const currentPage = images.slice(indexOfFirstImage, indexOfLastImage);
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
  return (
 
@@ -37,7 +39,7 @@ const App =() => {
         <h1 className="text-primary">My Images</h1>  
         <Images images={currentPage} loading={loading}/>
 
-        <Pagination imagePerPage={imagePerPage} totalImages={images.length} />
+        <Pagination imagePerPage={imagePerPage} totalImages={images.length} paginate={paginate}/>
     </div>
   );
 }
