@@ -5,10 +5,11 @@ const Images = ({images, loading}) => {
     if(loading){
       return <h1>Loading...</h1>
     } 
-
+  console.log(images.length);
     return (
       <ul className="list-items">
          {
+            
             images.map( (image) => (
                 <li key={image.id} className="list-group-item">
                 {image.title}

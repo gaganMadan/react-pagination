@@ -10,7 +10,7 @@ const App =() => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [imagePerPage, setImagePerPage] = useState(50); 
+  const [imagePerPage, setImagePerPage] = useState(10); 
 
 
   const API = 'https://jsonplaceholder.typicode.com/photos';
@@ -26,12 +26,15 @@ const App =() => {
     fetchImage();
   }, []);
 
+  const indexOfLastImage = currentPage * imagePerPage;
+  const indexOfFirstImage = indexOfLastImage - imagePerPage;
+  const currentPage = images.slice(indexOfFirstImage, indexOfLastImage);
 
  return (
 
     <div className="container">
         <h1 className="text-primary">My Images</h1>  
-        <Images images={images} loading={loading}/>
+        <Images images={currentPage} loading={loading}/>
     </div>
   );
 }
